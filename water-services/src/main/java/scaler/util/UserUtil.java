@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.egov.common.contract.request.Role;
 import org.egov.common.contract.request.User;
 import org.egov.common.contract.user.UserDetailResponse;
-import org.egov.common.contract.user.enums.UserType;
 import org.egov.tracer.model.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -113,10 +112,7 @@ public class UserUtil {
      * @param tenantId
      * @param userInfo
      */
-    public void addUserDefaultFields(String mobileNumber, String tenantId, User userInfo, UserType userType) {
-        Role role = getCitizenRole(tenantId);
-        userInfo.setRoles((List<Role>) Collections.singleton(role));
-        userInfo.setType(String.valueOf(userType));
+    public void addUserDefaultFields(String mobileNumber, String tenantId, User userInfo) {
         userInfo.setUserName(mobileNumber);
         userInfo.setTenantId(getStateLevelTenant(tenantId));
     }

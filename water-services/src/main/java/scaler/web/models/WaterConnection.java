@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.egov.common.contract.models.AuditDetails;
 import org.egov.common.contract.models.Document;
 import org.egov.common.contract.models.Workflow;
+import org.egov.common.contract.request.User;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class WaterConnection {
 
     @JsonProperty("connectionHolders")
 
-    private List<String> connectionHolders = null;
+    private List<User> connectionHolders = null;
 
     @JsonProperty("connectionNo")
 
@@ -95,8 +96,10 @@ public class WaterConnection {
     @Valid
     private List<Document> documents = null;
 
+    @JsonProperty("")
 
-    public WaterConnection addConnectionHoldersItem(String connectionHoldersItem) {
+
+    public WaterConnection addConnectionHoldersItem(User connectionHoldersItem) {
         if (this.connectionHolders == null) {
             this.connectionHolders = new ArrayList<>();
         }
